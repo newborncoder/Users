@@ -81,29 +81,29 @@ input, label {
 			success: function(data){
 				$('#entries').html('');
 
-				data.Items.forEach(function(guestbookItem){
+				data.Items.forEach(function(userItem){
 					$('#entries').append('<p style="border-style: dotted;">'
-					 + guestbookItem.username
+					 + userItem.username
 					 + ' : '
-					 + guestbookItem.city
+					 + userItem.city
 					 + ' : '
-					 + guestbookItem.email_id
+					 + userItem.email_id
 					 + ' : '
- 				 	 + guestbookItem.mobile_number
+ 				 	 + userItem.mobile_number
 					 + ' : '
- 				 	 + guestbookItem.address
+ 				 	 + userItem.address
 					 + ' : '
- 				 	 + guestbookItem.company
+ 				 	 + userItem.company
 					 + ' : '
- 				 	 + guestbookItem.food
+ 				 	 + userItem.food
 					 + ' : '
- 				 	 + guestbookItem.sports
+ 				 	 + userItem.sports
 					 + ' : '
- 				 	 + guestbookItem.media
+ 				 	 + userItem.media
 					 + ' : '
-					 + guestbookItem.title
+					 + userItem.title
 					 + ' : '
- 				 	 + guestbookItem.places +
+ 				 	 + userItem.places +
 					 '</p>');
 				})
 			}
