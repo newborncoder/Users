@@ -1,0 +1,144 @@
+<html>
+<head></head>
+<style>
+
+label {
+    width:180px;
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+}
+
+input, label {
+    float:left;
+}
+
+</style>
+<body>
+
+	<h1>Create New User Profile</h1>
+
+	<form>
+
+		<label for="username">User Name</label>
+		<input type="text" id="username"></input><br>
+
+		<label for="email_id">Email ID</label>
+		<input type="text" id="email_id"></input><br>
+
+		<label for="city">City</label>
+		<input type="text" id="city"></input><br>
+
+		<label for="mobile_number">Mobile Number</label>
+		<input type="text" id="mobile_number"></input><br>
+
+		<label for="address">Address</label>
+		<input type="text" id="address"></input><br>
+
+		<label for="company">Company</label>
+		<input type="text" id="company"></input><br>
+
+		<label for="title">Title</label>
+		<input type="text" id="title"></input><br>
+
+		<label for="sports">Sports</label>
+		<input type="text" id="sports"></input><br>
+
+		<label for="food">Food</label>
+		<input type="text" id="food"></input><br>
+
+		<label for="media">Media</label>
+		<input type="text" id="media"></input><br>
+
+		<label for="places">Places</label>
+		<input type="text" id="places"></input><br>
+
+		<label for="quote">Fav Quote</label>
+		<input type="text" id="quote"></input><br>
+
+		<button id="submitButton">Submit</button>
+	</form>
+
+  <br>
+
+	<h1>Users Information</h1>
+	<div id="entries">
+
+	</div>
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	  var API_URL = 'https://ra4m08z3k3.execute-api.us-east-2.amazonaws.com/prod/entries';
+
+	   $(document).ready(function(){
+		$.ajax({
+			type: 'GET',
+			url: API_URL,
+
+			success: function(data){
+				$('#entries').html('');
+
+				data.Items.forEach(function(guestbookItem){
+					$('#entries').append('<p style="border-style: dotted;">'
+					 + guestbookItem.username
+					 + ' : '
+					 + guestbookItem.city
+					 + ' : '
+					 + guestbookItem.email_id
+					 + ' : '
+ 				 	 + guestbookItem.mobile_number
+					 + ' : '
+ 				 	 + guestbookItem.address
+					 + ' : '
+ 				 	 + guestbookItem.company
+					 + ' : '
+ 				 	 + guestbookItem.food
+					 + ' : '
+ 				 	 + guestbookItem.sports
+					 + ' : '
+ 				 	 + guestbookItem.media
+					 + ' : '
+					 + guestbookItem.title
+					 + ' : '
+ 				 	 + guestbookItem.places +
+					 '</p>');
+				})
+			}
+		});
+	  });
+
+
+		$('#submitButton').on('click', function(){
+			$.ajax({
+				type: 'POST',
+				url: API_URL,
+				data: JSON.stringify({
+					"email_id": $('#email_id').val(),
+					"city": $('#city').val(),
+					"username": $('#username').val(),
+					"mobile_number": $('#mobile_number').val(),
+					"address": $('#address').val(),
+					"company": $('#company').val(),
+					"title": $('#title').val(),
+					"sports": $('#sports').val(),
+					"food": $('#food').val(),
+					"places": $('#places').val(),
+					"media": $('#media').val(),
+					"quote": $('#quote').val(),
+				}),
+				contentType: "application/json",
+
+				success: function(data){
+						location.reload();
+				}
+			});
+			return false;
+		});
+
+	</script>
+
+</body>
+</html>

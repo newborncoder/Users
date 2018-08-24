@@ -1,0 +1,15 @@
+{
+  "user_id": 1,
+  "username": "TestUser",
+  "email_id": "test@test.com",
+  "mobile_number": 1234567,
+  "address":"Earth",
+  "company":"XYZCompany",
+  "title":"TestTitle",
+  "sport":"xyzSport",
+  "food":"GoodFood",
+  "places":"Earth",
+  "media":"cartoon",
+  "quote":"StayHungry",
+  "city":"Bangalore"
+}
